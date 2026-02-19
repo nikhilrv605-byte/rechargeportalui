@@ -1,0 +1,357 @@
+/* ================= SUBSCRIPTION PAGE ================= */
+.subscription-page {
+  padding: 60px 6%;
+  background: var(--bg-gradient);
+  min-height: 100vh;
+  color: var(--text-primary);
+  /* Smooth transition for theme switching */
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* ================= HEADER ================= */
+.subscription-header {
+  text-align: center;
+  margin-bottom: 80px;
+  animation: slideUp 0.8s ease-out;
+}
+
+.subscription-header h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--primary), #3b82f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subscription-header p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ================= GRID LAYOUT ================= */
+.subscription-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+  padding-bottom: 40px;
+}
+
+/* ================= CARD DESIGN ================= */
+.subscription-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  padding: 40px 30px;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* Springy effect */
+
+  /* Stagger animation based on child index would be ideal, 
+     but simple slideUp works for now */
+  animation: slideUp 0.8s ease-out backwards;
+}
+
+/* Float animation override for specific interaction or just hover */
+.subscription-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: var(--shadow-xl), var(--shadow-bloom);
+  border-color: var(--primary);
+}
+
+/* Header/Logo Area */
+.subscription-card img {
+  height: 50px;
+  margin-bottom: 24px;
+  /* Add subtle drop shadow to logos */
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  transition: transform 0.3s ease;
+}
+
+.subscription-card:hover img {
+  transform: scale(1.1);
+}
+
+.subscription-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+/* Features List */
+.subscription-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+  width: 100%;
+}
+
+.subscription-card ul li {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 26px;
+  transition: color 0.3s ease;
+}
+
+.subscription-card ul li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  color: var(--primary);
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+/* Price Tag */
+.price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  background: var(--primary-light);
+  padding: 6px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(var(--primary), 0.2);
+}
+
+/* Subscribe Button */
+.subscribe-btn {
+  margin-top: auto;
+  width: 100%;
+  padding: 14px 0;
+  border-radius: 14px;
+  border: none;
+  background: var(--accent-gradient);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Button Shine Effect on Hover */
+.subscribe-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent);
+  transition: 0.4s;
+}
+
+.subscribe-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.subscribe-btn:hover::after {
+  left: 100%;
+}
+
+/* ================= BRAND SPECIFIC BUTTONS ================= */
+
+/* Helper to reset theme overrides if necessary */
+.subscription-card .subscribe-btn {
+  color: #fff !important;
+  /* Always white text for brand buttons (except maybe light ones) */
+}
+
+/* Netflix */
+.netflix {
+  color: #e50914;
+}
+
+.netflix .subscribe-btn {
+  background: #e50914;
+  box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3);
+}
+
+.netflix .subscribe-btn:hover {
+  background: #f40612;
+  box-shadow: 0 8px 25px rgba(229, 9, 20, 0.5);
+}
+
+/* Amazon Prime */
+.prime {
+  color: #00a8e1;
+}
+
+.prime .subscribe-btn {
+  background: #00a8e1;
+  box-shadow: 0 4px 15px rgba(0, 168, 225, 0.3);
+}
+
+.prime .subscribe-btn:hover {
+  background: #008ebf;
+  box-shadow: 0 8px 25px rgba(0, 168, 225, 0.5);
+}
+
+/* Hotstar */
+.hotstar {
+  color: #e01fd3;
+}
+
+.hotstar .subscribe-btn {
+  background: linear-gradient(135deg, #180c42, #e01fd3);
+  box-shadow: 0 4px 15px rgba(224, 31, 211, 0.3);
+}
+
+.hotstar .subscribe-btn:hover {
+  background: linear-gradient(135deg, #180c42, #ff23ef);
+  box-shadow: 0 8px 25px rgba(224, 31, 211, 0.5);
+}
+
+/* Sony LIV */
+.sony {
+  color: #6d28d9;
+}
+
+.sony .subscribe-btn {
+  background: #6d28d9;
+  box-shadow: 0 4px 15px rgba(109, 40, 217, 0.3);
+}
+
+.sony .subscribe-btn:hover {
+  background: #5b21b6;
+  box-shadow: 0 8px 25px rgba(109, 40, 217, 0.5);
+}
+
+/* ZEE5 */
+.zee5 {
+  color: #831afe;
+}
+
+/* Updated to ZEE5 Purple for better visibility */
+.zee5 .subscribe-btn {
+  background: hsl(270, 13%, 24%);
+  box-shadow: 0 4px 15px rgba(131, 26, 254, 0.3);
+}
+
+.zee5 .subscribe-btn:hover {
+  background: #0f0f0f;
+  box-shadow: 0 8px 25px rgba(131, 26, 254, 0.5);
+}
+
+/* MX Player */
+.mxplayer {
+  color: #0ea5e9;
+}
+
+.mxplayer .subscribe-btn {
+  background: #0ea5e9;
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+}
+
+.mxplayer .subscribe-btn:hover {
+  background: #0284c7;
+  box-shadow: 0 8px 25px rgba(14, 165, 233, 0.5);
+}
+
+/* YouTube */
+.youtube {
+  color: #ff0000;
+}
+
+.youtube .subscribe-btn {
+  background: #ff0000;
+  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+}
+
+.youtube .subscribe-btn:hover {
+  background: #cc0000;
+  box-shadow: 0 8px 25px rgba(255, 0, 0, 0.5);
+}
+
+/* Spotify */
+.spotify {
+  color: #1db954;
+}
+
+.spotify .subscribe-btn {
+  background: #1db954;
+  box-shadow: 0 4px 15px rgba(29, 185, 84, 0.3);
+}
+
+.spotify .subscribe-btn:hover {
+  background: #1ed760;
+  box-shadow: 0 8px 25px rgba(29, 185, 84, 0.5);
+}
+
+/* Apple Music */
+.apple {
+  color: #fa586a;
+}
+
+.apple .subscribe-btn {
+  background: #fa586a;
+  box-shadow: 0 4px 15px rgba(250, 88, 106, 0.3);
+}
+
+.apple .subscribe-btn:hover {
+  background: #e11d48;
+  box-shadow: 0 8px 25px rgba(250, 88, 106, 0.5);
+}
+
+/* Jio Saavn */
+.jiosaavn {
+  color: #00d09c;
+}
+
+.jiosaavn .subscribe-btn {
+  background: #00d09c;
+  box-shadow: 0 4px 15px rgba(0, 208, 156, 0.3);
+}
+
+.jiosaavn .subscribe-btn:hover {
+  background: #00b386;
+  box-shadow: 0 8px 25px rgba(0, 208, 156, 0.5);
+}
+
+/* Wynk Music */
+.wynk {
+  color: #ff0000;
+}
+
+.wynk .subscribe-btn {
+  background: linear-gradient(135deg, #ff0000, #b91c1c);
+  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+}
+
+.wynk .subscribe-btn:hover {
+  background: linear-gradient(135deg, #cc0000, #991b1b);
+  box-shadow: 0 8px 25px rgba(255, 0, 0, 0.5);
+}
+
+/* Gaana */
+.gaana {
+  color: #f60;
+}
+
+.gaana .subscribe-btn {
+  background: #f60;
+  box-shadow: 0 4px 15px rgba(255, 102, 0, 0.3);
+}
+
+.gaana .subscribe-btn:hover {
+  background: #e65c00;
+  box-shadow: 0 8px 25px rgba(255, 102, 0, 0.5);
+}

@@ -1,0 +1,44 @@
+/* ========= LIGHT THEME ========= */
+:root {
+  --bg: #f0f4f8;           /* soft pastel background */
+  --surface: #ffffff;
+  --text: #1f2937;         /* dark grey text */
+  --muted-text: #475569;
+
+  --primary: #0d9488;      /* soft blue gradient start */
+  --primary-hover: #14b8a6; /* soft blue gradient end */
+
+  --accent: #facc15;       /* yellow button for light mode */
+  --accent-hover: #eab308;
+
+  --border: #e5e7eb;
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* ========= DARK THEME ========= */
+[data-theme="dark"] {
+  --bg: #0b1220;           /* dark navy background */
+  --surface: #111827;
+  --text: #e5e7eb;         /* soft white text */
+  --muted-text: #9ca3af;
+
+  --primary: #14b8a6;       /* blue gradient start */
+  --primary-hover: #0d9488; /* blue gradient end */
+
+  --accent: #14b8a6;       /* soft teal button for dark mode */
+  --accent-hover: #0d9488;
+
+  --border: #1f2937;
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Global application */
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+button, input {
+  transition: all 0.25s ease;
+}

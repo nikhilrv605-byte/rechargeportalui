@@ -1,0 +1,151 @@
+/* ================= GLOBAL ROOT VARIABLES ================= */
+:root {
+  /* Light Theme Palette - Teal & Slate */
+  --bg-main: #f0fdfa;
+  /* Very light teal/slate tint */
+  --bg-gradient: linear-gradient(135deg, #f0fdfa 0%, #e0f2fe 100%);
+  --card-bg: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --border-color: #e2e8f0;
+
+  --primary: #0d9488;
+  /* Teal 600 */
+  --primary-hover: #0f766e;
+  /* Teal 700 */
+  --primary-light: rgba(13, 148, 136, 0.1);
+  --accent-gradient: linear-gradient(135deg, #14b8a6, #0d9488);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-bloom: 0 0 15px rgba(13, 148, 136, 0.25);
+}
+
+/* ================= DARK THEME ================= */
+[data-theme="dark"] {
+  --bg-main: #0f172a;
+  /* Slate 900 */
+  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+  --card-bg: #1e293b;
+  /* Slate 800 */
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --border-color: #334155;
+
+  --primary: #2dd4bf;
+  /* Teal 400 */
+  --primary-hover: #14b8a6;
+  /* Teal 500 */
+  --primary-light: rgba(45, 212, 191, 0.15);
+  --accent-gradient: linear-gradient(135deg, #2dd4bf, #14b8a6);
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5), 0 8px 10px -6px rgb(0 0 0 / 0.5);
+}
+
+/* ================= GLOBAL RESETS & BASICS ================= */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg-main);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+#root {
+  width: 100%;
+}
+
+/* ================= SHARED ANIMATIONS ================= */
+
+/* Slide Up & Fade In */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade In Only */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Pop In / Scale Up */
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Floating / Hover Float Effect */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Gradient Shimmer */
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ================= UTILITY CLASSES ================= */
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+}

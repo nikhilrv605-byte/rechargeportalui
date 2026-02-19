@@ -1,0 +1,35 @@
+/* GLOBAL RESET */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+/* FIX FULL-WIDTH + REMOVE RIGHT SIDE WHITE SPACE */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;   /* Prevent horizontal scroll */
+  position: relative;
+}
+
+/* GENERAL SECTIONS */
+section {
+  padding: 60px 20px;
+  width: 100%;
+}
+
+/* HEADINGS */
+h1, h2, h3 {
+  font-weight: 700;
+}
+
+/* CONTAINER (ONLY FOR CONTENT, NOT FULL PAGE) */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}

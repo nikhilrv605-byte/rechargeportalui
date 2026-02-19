@@ -1,0 +1,165 @@
+.recharge-section {
+    max-width: 1100px;
+    margin: 0px auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 20;
+}
+
+.recharge-card-container {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-radius: 30px;
+    border: 1px solid var(--border-color);
+    padding: 40px;
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.12);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="dark"] .recharge-card-container {
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.4);
+}
+
+.recharge-tabs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 24px;
+}
+
+.recharge-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 20px;
+    background: rgba(13, 148, 136, 0.02);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+[data-theme="light"] .recharge-tab {
+    background: #f8fafc;
+}
+
+[data-theme="dark"] .recharge-tab {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* Hover Effects */
+.recharge-tab:hover {
+    transform: translateY(-10px);
+    background: white;
+    border-color: var(--primary);
+    box-shadow: 0 20px 40px -10px rgba(13, 148, 136, 0.25);
+}
+
+[data-theme="dark"] .recharge-tab:hover {
+    background: #1e293b;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
+}
+
+.tab-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(13, 148, 136, 0.08);
+    color: var(--primary);
+    border-radius: 20px;
+    margin-bottom: 16px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+[data-theme="light"] .recharge-tab:hover .tab-icon {
+    background: var(--accent-gradient);
+    color: rgb(0, 0, 0) !important;
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 10px 20px rgba(13, 148, 136, 0.4);
+}
+
+[data-theme="dark"] .recharge-tab:hover .tab-icon {
+    background: var(--accent-gradient);
+    color: white !important;
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 10px 20px rgba(20, 184, 166, 0.3);
+}
+
+.recharge-tab span {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+[data-theme="light"] .recharge-tab:hover span {
+    color: var(--primary);
+    transform: scale(1.05);
+}
+
+[data-theme="dark"] .recharge-tab:hover span {
+    color: #5eead4;
+    /* Brighter teal for dark mode hover */
+}
+
+/* Shine Effect */
+.recharge-tab::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.recharge-tab:hover::after {
+    opacity: 1;
+}
+
+/* Responsive Fixes */
+@media (max-width: 768px) {
+    .recharge-section {
+        margin: 20px auto;
+    }
+
+    .recharge-card-container {
+        padding: 24px 16px;
+    }
+
+    .recharge-tabs-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+
+    .recharge-tab {
+        padding: 20px 10px;
+    }
+
+    .tab-icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 10px;
+    }
+
+    .recharge-tab span {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .recharge-tabs-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
