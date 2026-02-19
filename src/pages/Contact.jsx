@@ -1,11 +1,34 @@
-import React from "react";
+import React, { useRef } from "react";
+import emailjs from "@emailjs/browser";
 import "./Contact.css";
 
 const Contact = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_c032ewy",     // 🔹 Replace with EmailJS Service ID
+        "template_heuv639",    // 🔹 Replace with Template ID
+        form.current,
+        "INeaaPf85rD6fcHgH"      // 🔹 Replace with Public Key
+      )
+      .then(
+        (result) => {
+          alert("Message sent successfully!");
+          form.current.reset();
+        },
+        (error) => {
+          alert("Failed to send message. Try again.");
+          console.log(error.text);
+        }
+      );
+  };
 
   return (
     <div className="contact-page">
-      {/* Contact Section */}
       <section className="contact-section">
         <div className="contact-header">
           <h1>Contact Us</h1>
@@ -54,20 +77,31 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <form className="contact-form">
+          <form ref={form} className="contact-form" onSubmit={sendEmail}>
             <div className="form-group">
               <label>Your Name</label>
-              <input type="text" placeholder="Enter your name" required />
+              <input 
+                type="text" 
+                name="name"
+                placeholder="Enter your name" 
+                required 
+              />
             </div>
 
             <div className="form-group">
               <label>Email Address</label>
-              <input type="email" placeholder="Enter your email" required />
+              <input 
+                type="email" 
+                name="email"
+                placeholder="Enter your email" 
+                required 
+              />
             </div>
 
             <div className="form-group">
               <label>Message</label>
               <textarea
+                name="message"
                 placeholder="Write your message here..."
                 rows="4"
                 required
