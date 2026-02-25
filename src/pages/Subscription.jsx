@@ -105,7 +105,7 @@ const Subscription = () => {
           <div className="price">Starting at ₹149/month</div>
           <button
             className="subscribe-btn"
-            onClick={() => handleSubscriptionPayment("Netflix", 149)}
+            onClick={() => handleSubscribe("Netflix", 149)}
           >
             Subscribe
           </button>
@@ -122,7 +122,7 @@ const Subscription = () => {
             <li>Prime Music included</li>
           </ul>
           <div className="price">₹299/month</div>
-          <button className="subscribe-btn" onClick={() => handleSubscriptionPayment("Amazon Prime", 299)}>Subscribe</button>
+          <button className="subscribe-btn" onClick={() => handleSubscribe("Amazon Prime", 299)}>Subscribe</button>
         </div>
 
         {/* Hotstar */}
