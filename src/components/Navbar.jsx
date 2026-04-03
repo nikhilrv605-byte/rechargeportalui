@@ -14,7 +14,7 @@ const Navbar = () => {
       <div className="navbar-inner">
         <div className="logo" onClick={() => navigate("/")}>
           <img
-            src="src/assets/RechargePortal1.png"
+            src="/assets/RechargePortal1.png"
             alt="Recharge Portal"
             className="logoR"
           />
