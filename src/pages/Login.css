@@ -151,9 +151,162 @@
   color: #14b8a6;
 }
 
+.google-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  color: #444;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.google-btn:hover {
+  background-color: #f5f5f5;
+}
+
+.divider {
+  text-align: center;
+  margin: 15px 0;
+  color: #888;
+}
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #e0f7fa, #f1f8ff);
+}
+
+.auth-card {
+  width: 380px;
+  padding: 40px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.auth-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.auth-subtitle {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.input-group {
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+.input-group label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  transition: 0.2s ease;
+}
+
+.input-group input:focus {
+  border-color: #4cafef;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(76, 175, 239, 0.15);
+}
+
+.auth-btn {
+  width: 100%;
+  padding: 12px;
+  background: #4cafef;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+  margin-top: 10px;
+}
+
+.auth-btn:hover {
+  background: #3a9de0;
+}
+
+.divider {
+  margin: 20px 0;
+  position: relative;
+  font-size: 13px;
+  color: #888;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: #ddd;
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+.google-btn {
+  width: 100%;
+  padding: 11px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: 0.2s ease;
+}
+
+.google-btn:hover {
+  background: #f7f7f7;
+  border-color: #ccc;
+}
+
+.google-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.switch-text {
+  margin-top: 18px;
+  font-size: 14px;
+}
+
+.switch-link {
+  color: #4cafef;
+  text-decoration: none;
+  font-weight: 500;
+}
+
 /* Reset margins globally */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+

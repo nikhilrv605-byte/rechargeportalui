@@ -5,7 +5,6 @@ import "./PrivacyPolicy.css";
 const PrivacyPolicy = () => {
     return (
         <div className="privacy-page">
-            {/* HERO */}
             <section className="privacy-hero">
                 <div className="privacy-hero-content">
                     <h1>Privacy Policy</h1>
@@ -17,7 +16,6 @@ const PrivacyPolicy = () => {
                 </div>
             </section>
 
-            {/* CONTENT */}
             <section className="privacy-content">
                 <div className="privacy-card">
                     <FileText className="privacy-icon" />

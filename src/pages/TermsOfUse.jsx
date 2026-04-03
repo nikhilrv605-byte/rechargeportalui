@@ -5,7 +5,6 @@ import "./TermsOfUse.css";
 const TermsOfUse = () => {
     return (
         <div className="terms-page">
-            {/* HERO */}
             <section className="terms-hero">
                 <div className="terms-hero-content">
                     <h1>Terms of Use</h1>
@@ -17,7 +16,6 @@ const TermsOfUse = () => {
                 </div>
             </section>
 
-            {/* CONTENT */}
             <section className="terms-content">
                 <div className="terms-card">
                     <CheckCircle className="terms-icon" />

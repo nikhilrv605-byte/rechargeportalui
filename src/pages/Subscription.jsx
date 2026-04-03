@@ -93,9 +93,7 @@ const Subscription = () => {
       <div className="subscription-header">
         <h1>Subscriptions</h1>
         <p>Choose a plan and start enjoying premium content</p>
-        {!isLoggedIn && (
-          <p className="login-warning" style={{ marginTop: "1rem" }}>⚠ Please login to continue</p>
-        )}
+        
       </div>
 
       <div className="subscription-grid">

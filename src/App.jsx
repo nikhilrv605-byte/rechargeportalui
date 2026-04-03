@@ -13,13 +13,14 @@ import Payment from "./pages/Payment";
 import Profile from "./pages/Profile";
 import { AuthProvider } from "./context/AuthContext";
 import ThemeProvider from "./context/ThemeContext"; // Corrected import path
+// Import the new component
 
 function App() {
   return (
     // Providers are typically wrapped in main.jsx for simplification,
     // but keeping them here as per the provided App.jsx content.
     // The instruction "simplify provider wrapping in main.jsx" implies
-    // moving these out of App.jsx, but this file is App.jsx.
+    // moving these out of App.jsx, but this file is App.jsx.cd
     <AuthProvider>
       <ThemeProvider>
         <BrowserRouter>
@@ -36,6 +37,8 @@ function App() {
               <Route path="/subscription" element={<Subscription />} />
               <Route path="/payment" element={<Payment />} />
               <Route path="/profile" element={<Profile />} />
+                 {/* 🔹 ADD IT HERE */}
+        
             </Routes>
           </MainLayout>
         </BrowserRouter>
