@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Footer.css";
+import logo from "../assets/rechargelogo.png";
 
 const Footer = () => {
   return (
@@ -7,7 +8,7 @@ const Footer = () => {
       <div className="footer-inner">
         <div className="footer-brand">
           <img
-            src="src/assets/RechargePortal1.png"
+            src={logo}
             alt="Recharge Portal"
             className="logoR"
           />

@@ -7,6 +7,41 @@ const Profile = () => {
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
 
+    // Profile Settings States
+    const [isEditing, setIsEditing] = useState(false);
+    const [successMessage, setSuccessMessage] = useState("");
+    const [userInfo, setUserInfo] = useState({
+        name: "",
+        email: "",
+        mobile: "",
+        userId: ""
+    });
+    const [favNumber, setFavNumber] = useState(localStorage.getItem("favouriteMobile") || "");
+    const [tempFavNumber, setTempFavNumber] = useState(favNumber);
+    const [notificationsOn, setNotificationsOn] = useState(true);
+
+    useEffect(() => {
+        if (user) {
+            setUserInfo({
+                name: user.name || "",
+                email: user.email || "",
+                mobile: user.mobile || "+91 9876543210",
+                userId: user.id || "USR" + Math.floor(100000 + Math.random() * 900000)
+            });
+        }
+    }, [user]);
+
+    const handleSaveProfile = () => {
+        setIsEditing(false);
+        localStorage.setItem("favouriteMobile", tempFavNumber);
+        setFavNumber(tempFavNumber);
+
+        setSuccessMessage("Profile updated successfully");
+        setTimeout(() => {
+            setSuccessMessage("");
+        }, 3000);
+    };
+
     useEffect(() => {
         if (token) {
             fetchOrders();
@@ -39,46 +74,86 @@ const Profile = () => {
                         {user?.name?.charAt(0).toUpperCase() || "U"}
                     </div>
                     <div className="user-info">
-                        <h1>{user?.name}</h1>
-                        <p>{user?.email}</p>
+                        <h1>{userInfo.name || user?.name}</h1>
+                        <p>{userInfo.email || user?.email}</p>
                     </div>
                 </header>
 
-                <section className="transaction-history">
-                    <h2>Transaction History</h2>
-                    {loading ? (
-                        <p className="loading">Loading your transactions...</p>
-                    ) : orders.length === 0 ? (
-                        <p className="no-orders">No transactions found yet.</p>
-                    ) : (
-                        <div className="orders-list">
-                            {orders.map((order) => (
-                                <div key={order.id} className="order-card">
-                                    <div className="order-main">
-                                        <div className="order-type-badge">
-                                            {order.type}
-                                        </div>
-                                        <div className="order-amount">
-                                            ₹{order.amount}
-                                        </div>
-                                    </div>
-                                    <div className="order-details">
-                                        <p><strong>Order ID:</strong> {order.razorpay_order_id}</p>
-                                        <p><strong>Date:</strong> {new Date(order.createdAt).toLocaleDateString()}</p>
-                                        <p><strong>Status:</strong> <span className={`status-${order.status}`}>{order.status}</span></p>
-                                        {order.details && (
-                                            <div className="sub-details">
-                                                {order.details.operator && <p><strong>Operator:</strong> {order.details.operator}</p>}
-                                                {order.details.mobileNumber && <p><strong>Number:</strong> {order.details.mobileNumber}</p>}
-                                                {order.details.name && <p><strong>Service:</strong> {order.details.name}</p>}
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
-                            ))}
+                <section className="profile-details-section">
+                    <div className="section-header">
+                        <h2>User Information</h2>
+                        {!isEditing ? (
+                            <button className="edit-btn" onClick={() => { setIsEditing(true); setTempFavNumber(favNumber); }}>Edit Profile</button>
+                        ) : (
+                            <button className="save-btn" onClick={handleSaveProfile}>Save Changes</button>
+                        )}
+                    </div>
+                    {successMessage && <div className="success-message">{successMessage}</div>}
+
+                    <div className="info-grid">
+                        <div className="info-group">
+                            <label>Name</label>
+                            {isEditing ? (
+                                <input type="text" value={userInfo.name} onChange={(e) => setUserInfo({ ...userInfo, name: e.target.value })} />
+                            ) : (
+                                <p>{userInfo.name || "N/A"}</p>
+                            )}
                         </div>
-                    )}
+                        <div className="info-group">
+                            <label>Email</label>
+                            {isEditing ? (
+                                <input type="email" value={userInfo.email} onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value })} />
+                            ) : (
+                                <p>{userInfo.email || "N/A"}</p>
+                            )}
+                        </div>
+                        <div className="info-group">
+                            <label>Mobile Number</label>
+                            {isEditing ? (
+                                <input type="text" value={userInfo.mobile} onChange={(e) => setUserInfo({ ...userInfo, mobile: e.target.value })} />
+                            ) : (
+                                <p>{userInfo.mobile || "N/A"}</p>
+                            )}
+                        </div>
+                        <div className="info-group">
+                            <label>User ID</label>
+                            <p className="read-only">{userInfo.userId || "N/A"}</p>
+                        </div>
+                    </div>
                 </section>
+
+                <section className="favourite-recharge-section">
+                    <h2>Favourite Recharge</h2>
+                    <div className="info-group">
+                        <label>Favourite Mobile Number</label>
+                        {isEditing ? (
+                            <input
+                                type="text"
+                                placeholder="Enter favourite number"
+                                value={tempFavNumber}
+                                onChange={(e) => setTempFavNumber(e.target.value)}
+                            />
+                        ) : (
+                            <p>{favNumber || "No favourite number set"}</p>
+                        )}
+                    </div>
+                </section>
+
+                <section className="settings-section">
+                    <h2>Settings</h2>
+                    <div className="setting-item">
+                        <label>Notifications</label>
+                        <div className={`toggle-switch ${notificationsOn ? 'on' : 'off'}`} onClick={() => setNotificationsOn(!notificationsOn)}>
+                            <div className="toggle-knob"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <div className="last-updated">
+                    <p>Last Updated: Today</p>
+                </div>
+
+
             </div>
         </div>
     );
