@@ -80,6 +80,10 @@ const Subscription = () => {
   const { isLoggedIn } = useContext(AuthContext);
 
   const handleSubscribe = (name, price) => {
+    if (!isLoggedIn) {
+      navigate("/login");
+      return;
+    }
     navigate("/payment", {
       state: {
         type: "Subscription",
@@ -109,7 +113,6 @@ const Subscription = () => {
           <div className="price">Starting at ₹149/month</div>
           <button
             className="subscribe-btn"
-            disabled={!isLoggedIn}
             onClick={() => handleSubscribe("Netflix", 149)}
           >
             {isLoggedIn ? "Subscribe" : "Login to Subscribe"}
@@ -127,7 +130,7 @@ const Subscription = () => {
             <li>Prime Music included</li>
           </ul>
           <div className="price">₹299/month</div>
-          <button className="subscribe-btn" disabled={!isLoggedIn} onClick={() => handleSubscribe("Amazon Prime", 299)}>{isLoggedIn ? "Subscribe" : "Login to Subscribe"}</button>
+          <button className="subscribe-btn" onClick={() => handleSubscribe("Amazon Prime", 299)}>{isLoggedIn ? "Subscribe" : "Login to Subscribe"}</button>
         </div>
 
         {/* Hotstar */}
@@ -140,7 +143,7 @@ const Subscription = () => {
             <li>Kids content</li>
           </ul>
           <div className="price">Starting at ₹149/month</div>
-          <button className="subscribe-btn" disabled={!isLoggedIn} onClick={() => handleSubscribe("Jio Hotstar", 149)}>{isLoggedIn ? "Subscribe" : "Login to Subscribe"}</button>
+          <button className="subscribe-btn" onClick={() => handleSubscribe("Jio Hotstar", 149)}>{isLoggedIn ? "Subscribe" : "Login to Subscribe"}</button>
         </div>
 
         {/* Sony LIV */}
@@ -153,7 +156,7 @@ const Subscription = () => {
             <li>Sports streaming</li>
           </ul>
           <div className="price">Starting at ₹199/month</div>
-          <button className="subscribe-btn" disabled={!isLoggedIn} onClick={() => handleSubscribe("Sony LIV", 199)}>{isLoggedIn ? "Subscribe" : "Login to Subscribe"}</button>
+          <button className="subscribe-btn" onClick={() => handleSubscribe("Sony LIV", 199)}>{isLoggedIn ? "Subscribe" : "Login to Subscribe"}</button>
         </div>
 
         {/* ZEE5 */}
@@ -166,7 +169,7 @@ const Subscription = () => {
             <li>Multiple languages</li>
           </ul>
           <div className="price">Starting at ₹99/month</div>
-          <button className="subscribe-btn" disabled={!isLoggedIn} onClick={() => handleSubscribe("ZEE5", 99)}>{isLoggedIn ? "Subscribe" : "Login to Subscribe"}</button>
+          <button className="subscribe-btn" onClick={() => handleSubscribe("ZEE5", 99)}>{isLoggedIn ? "Subscribe" : "Login to Subscribe"}</button>
         </div>
 
         {/* MX Player */}
@@ -179,7 +182,7 @@ const Subscription = () => {
             <li>Multiple genres</li>
           </ul>
           <div className="price">Free / Premium plans</div>
-          <button className="subscribe-btn" disabled={!isLoggedIn} onClick={() => handleSubscribe("MX Player", 0)}>{isLoggedIn ? "Subscribe" : "Login to Subscribe"}</button>
+          <button className="subscribe-btn" onClick={() => handleSubscribe("MX Player", 0)}>{isLoggedIn ? "Subscribe" : "Login to Subscribe"}</button>
         </div>
 
         {/* YouTube */}
@@ -192,7 +195,7 @@ const Subscription = () => {
             <li>YouTube Music included</li>
           </ul>
           <div className="price">₹129/month</div>
-          <button className="subscribe-btn" disabled={!isLoggedIn} onClick={() => handleSubscribe("YouTube Premium", 129)}>{isLoggedIn ? "Subscribe" : "Login to Subscribe"}</button>
+          <button className="subscribe-btn" onClick={() => handleSubscribe("YouTube Premium", 129)}>{isLoggedIn ? "Subscribe" : "Login to Subscribe"}</button>
         </div>
 
         {/* Spotify */}
@@ -205,7 +208,7 @@ const Subscription = () => {
             <li>High quality audio</li>
           </ul>
           <div className="price">₹119/month</div>
-          <button className="subscribe-btn" disabled={!isLoggedIn} onClick={() => handleSubscribe("Spotify", 119)}>{isLoggedIn ? "Subscribe" : "Login to Subscribe"}</button>
+          <button className="subscribe-btn" onClick={() => handleSubscribe("Spotify", 119)}>{isLoggedIn ? "Subscribe" : "Login to Subscribe"}</button>
         </div>
 
         {/* Apple Music */}
@@ -218,7 +221,7 @@ const Subscription = () => {
             <li>Apple ecosystem support</li>
           </ul>
           <div className="price">₹99/month</div>
-          <button className="subscribe-btn" disabled={!isLoggedIn} onClick={() => handleSubscribe("Apple Music", 99)}>{isLoggedIn ? "Subscribe" : "Login to Subscribe"}</button>
+          <button className="subscribe-btn" onClick={() => handleSubscribe("Apple Music", 99)}>{isLoggedIn ? "Subscribe" : "Login to Subscribe"}</button>
         </div>
 
         {/* Jio Saavn */}
@@ -231,7 +234,7 @@ const Subscription = () => {
             <li>JioTunes included</li>
           </ul>
           <div className="price">₹99/month</div>
-          <button className="subscribe-btn" disabled={!isLoggedIn} onClick={() => handleSubscribe("Jio Saavn", 99)}>{isLoggedIn ? "Subscribe" : "Login to Subscribe"}</button>
+          <button className="subscribe-btn" onClick={() => handleSubscribe("Jio Saavn", 99)}>{isLoggedIn ? "Subscribe" : "Login to Subscribe"}</button>
         </div>
 
         {/* Wynk Music */}
@@ -244,7 +247,7 @@ const Subscription = () => {
             <li>High definition music</li>
           </ul>
           <div className="price">₹99/month</div>
-          <button className="subscribe-btn" disabled={!isLoggedIn} onClick={() => handleSubscribe("Wynk Music", 99)}>{isLoggedIn ? "Subscribe" : "Login to Subscribe"}</button>
+          <button className="subscribe-btn" onClick={() => handleSubscribe("Wynk Music", 99)}>{isLoggedIn ? "Subscribe" : "Login to Subscribe"}</button>
         </div>
 
         {/* Gaana */}
@@ -257,7 +260,7 @@ const Subscription = () => {
             <li>Ad-free experience</li>
           </ul>
           <div className="price">₹99/month</div>
-          <button className="subscribe-btn" disabled={!isLoggedIn} onClick={() => handleSubscribe("Gaana", 99)}>{isLoggedIn ? "Subscribe" : "Login to Subscribe"}</button>
+          <button className="subscribe-btn" onClick={() => handleSubscribe("Gaana", 99)}>{isLoggedIn ? "Subscribe" : "Login to Subscribe"}</button>
         </div>
 
       </div>
